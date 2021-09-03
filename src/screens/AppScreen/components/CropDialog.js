@@ -1,13 +1,30 @@
 import React, {useState, useCallback} from 'react';
 import Cropper from 'react-easy-crop'
+import { getCroppedImg } from '../../../utils/imageUtils';
 
-const CropDialog = ({ pic }) => {
+
+const CropDialog = ({ pic, callback, onConfirm }) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 })
   const [zoom, setZoom] = useState(1)
 
   const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
     console.log(croppedArea, croppedAreaPixels)
+    setCrop(croppedAreaPixels);
   }, []);
+
+  
+  const showCroppedImage = useCallback(async () => {
+    onConfirm();
+    try {
+     await getCroppedImg(
+        pic,
+        crop,
+        callback
+      )     
+    } catch (e) {
+      console.error(e)
+    }
+  }, [crop])
 
   return (
     <div>
@@ -27,6 +44,7 @@ const CropDialog = ({ pic }) => {
         }
       }}
     />
+    <button onClick={showCroppedImage}>確認上傳</button>
     </div>
   )
 }
