@@ -28,7 +28,7 @@ const AppScreen = props => {
                 withIcon={true}
                 buttonText='Choose images'
                 onChange={onChange}
-                imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                imgExtension={['.jpg', '.jpeg', '.gif', '.png', '.gif']}
             />
     </>
   )
