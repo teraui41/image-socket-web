@@ -18,10 +18,18 @@ export function getCroppedImg(image, crop, callback) {
 
   var imageDom = new Image();
   imageDom.onload = () => {
+    const scaleX = imageDom.naturalWidth / imageDom.width;
+    const scaleY = imageDom.naturalHeight / imageDom.height;
     ctx.drawImage(
       imageDom,
+      crop.x * scaleX,
+      crop.y * scaleY,
+      crop.width * scaleX,
+      crop.height * scaleY,
       0,
       0,
+      crop.width,
+      crop.height
     );
     const base64Image = canvas.toDataURL("image/jpeg");
     callback(base64Image);
