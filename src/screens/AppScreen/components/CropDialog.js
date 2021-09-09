@@ -43,7 +43,7 @@ const CropDialog = ({ pic, callback, onConfirm }) => {
       />
       { pic &&
         <div className="button-box">
-          <button className="crop-button" onClick={showCroppedImage}>裁切</button>
+          <button className="crop-button" onClick={showCroppedImage}>確認裁切</button>
         </div>
       }
     </div>
