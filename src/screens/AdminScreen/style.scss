@@ -1,6 +1,5 @@
 .images-box {
   height: 600px;
-  display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
@@ -12,6 +11,7 @@
   margin-top: 50px;
   border-radius: 10px;
   overflow: hidden;
+  text-align: center;
   
   img {
     width: 90px;
