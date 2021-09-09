@@ -3,6 +3,7 @@ import SocketClusterClient from 'socketcluster-client';
 let socket = SocketClusterClient.create({
   hostname: process.env.REACT_APP_DOMAIN,
   port: process.env.REACT_APP_PORT,
+  secure: true
 });
 
 (async () => {
