@@ -3,6 +3,7 @@ import ImageUploader from "react-images-upload";
 import CropDialog from "./components/CropDialog";
 import PreViewDialog from './components/PreViewDialog';
 import imageCompression from "browser-image-compression";
+import socket from '../../managers/socketManager';
 import './style.scss';
 
 const options = {
@@ -28,9 +29,13 @@ const AppScreen = (props) => {
     setOpen(true);
   }
 
+  const onConfirm = () => {
+    socket.transmitPublish("pic", preview);
+  }
+
   return (
     <div className="container">
-      <PreViewDialog open={open} onClose={() => setOpen(false)} preview={preview} />
+      <PreViewDialog open={open} onClose={() => setOpen(false)} preview={preview} onConfirm={onConfirm} />
       <CropDialog pic={pic} callback={setPreview} onConfirm={onCropConfirm}/>
       <ImageUploader
         singleImage

@@ -19,6 +19,7 @@ const CropDialog = ({ pic, callback, onConfirm }) => {
     } catch (e) {
       console.error(e);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [crop]);
 
   return (
@@ -36,10 +37,15 @@ const CropDialog = ({ pic, callback, onConfirm }) => {
             position: "relative",
             width: 400,
             height: 400,
+            margin: 'auto'
           },
         }}
       />
-      <button onClick={showCroppedImage}>確認上傳</button>
+      { pic &&
+        <div className="button-box">
+          <button className="crop-button" onClick={showCroppedImage}>裁切</button>
+        </div>
+      }
     </div>
   );
 };
